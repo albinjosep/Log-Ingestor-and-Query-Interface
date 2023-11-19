@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{% block title %}Log Query{% endblock %}
+
+{% block content %}
+    <h1>Log Query</h1>
+    <form method="post" action="{% url 'log_query' %}">
+        {% csrf_token %}
+        <label for="query">Search Query:</label>
+        <input type="text" name="query" id="query" required>
+        <button type="submit">Search</button>
+    </form>
+
+    <div>
+        {% if logs %}
+            <h2>Search Results:</h2>
+            <ul>
+                {% for log in logs %}
+                    <li>{{ log.level }} - {{ log.message }} - {{ log.timestamp }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+    </div>
+{% endblock %}

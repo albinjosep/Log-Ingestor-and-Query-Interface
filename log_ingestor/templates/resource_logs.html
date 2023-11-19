@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block title %}Resource Logs{% endblock %}
+
+{% block content %}
+    <h1>Resource Logs</h1>
+
+    {% if logs %}
+        <ul>
+            {% for log in logs %}
+                <li>
+                    <strong>Level:</strong> {{ log.level }}<br>
+                    <strong>Message:</strong> {{ log.message }}<br>
+                    <strong>Timestamp:</strong> {{ log.timestamp }}<br>
+                    <!-- Add more fields as needed -->
+                </li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>No logs found for the given resource ID.</p>
+    {% endif %}
+{% endblock %}
